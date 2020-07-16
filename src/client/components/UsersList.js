@@ -92,7 +92,7 @@ class UsersList extends Component {
                         <label style={style.header}>Users List</label>
                         {
                             this.props.isInitialLoading === false && this.props.initialLoadErrorMessage === "" &&
-                            <RaisedButton primary={true} label="Add new" style={style.addNewButton} onClick={this.onAddNewUserButtonClick.bind(this)} />
+                            <RaisedButton id="btnAddNew" primary={true} label="Add new" style={style.addNewButton} onClick={this.onAddNewUserButtonClick.bind(this)} />
                         }
                     </div>
 

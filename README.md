@@ -11,6 +11,7 @@ This is a boilerplate to build a full stack web application using React, Node.js
     - [Folder Structure](#folder-structure)
     - [Server Side](#server-side)
     - [Client Side](#client-side)
+  - [End To End Tests](#end-to-end-tests)
 
 ## Introduction
 This is a simple full stack [React](https://reactjs.org/) application with a [Node.js](https://nodejs.org/en/) and [Express](https://expressjs.com/) backend. Client side code is written in React and the backend API is written using Express.
@@ -27,10 +28,10 @@ In the production mode, we will have only 1 server running. All the client side 
 
 ```bash
 # Clone the repository
-git clone https://github.com/crsandeep/simple-react-full-stack
+git clone https://github.com/olegk79/lusha-home-task.git
 
 # Go inside the directory
-cd simple-react-full-stack
+cd lusha-home-task
 
 # Install dependencies
 yarn (or npm install)
@@ -43,33 +44,91 @@ yarn build (or npm run build)
 
 # Start production server
 yarn start (or npm start)
+
+# Run end to end test (was not finished)
+npm run test
 ```
 
 ## Documentation
 
 ### Folder Structure
 
-All the source code will be inside **src** directory. Inside src, there is client and server directory. All the frontend code (react, css, js and any other assets) will be in client directory. Backend Node.js/Express code will be in the server directory.
+- All the source code is inside **src** directory
+- Inside src, there are following folders:
+
+  - client
+  
+    All the frontend code (react, css, js and any other assets) is here
+  - server
+    
+    Backend Node.js/Express code is here
+  - tests
+
+    for end-to-end tests
+  - common
+    
+    for common stuff both for server and client - bcrypt salt used for hashing passwords is here. In production, of course, it should not be hard coded
+
 
 ### Server Side
 #### Technologies
-Express.js,
-Sqlite DB
+- Node.js
+- Express.js
+- Sqlite DB
 #### Database
-Sqlite database is used. It is lightweight and embedded-in-file SQL database. The DB is populated with some fake users and attached (in db folder). Also, "adapter" created for manipulations with the DB (adapters/sqlite.js). In "real" apps, of course, full SQL server or (may be even preferrable) Mongo DB may be used
+- Sqlite database is used. It is lightweight and embedded-in-file SQL database. The DB is populated with some fake users and attached (in db folder). Also, "adapter" created for manipulations with the DB (adapters/sqlite.js). 
+- In "real" apps in production, of course, full SQL server or (may be even preferrable) Mongo DB may be used
 #### Routes
-There are 2 express routes : 1) get users 2) add user
-
-
+There are 2 express routes : 
+- get users
+Get all users or get up to X users (paging)
+- add user
 ### Client Side
 #### Technologies
-React, React Router, React-Redux, Redux thunk, Axios
+- React
+- React Router
+- React-Redux
+- Redux thunk
+- Axios
+- Material UI
+#### State Management
+- React redux is used for state management. It is quite big overhead for such simple app but I wanted to show my knowledge in this area.
+- In "Add User" component I also used internal state for storing entered data - there is no need to store it in global state.
+- There are 2 reducers which combined in root reducer
 #### Components
-There are 3 components: 1) users list 2) add User 3) App (serves 1 and 2)
+There are 3 components:
+- Users List
+- Add User
+- App (root which serves 1 and 2)
+
+Material UI is used for styling
+
+React Hash Router is used for navigation
+##### Users List Component
+Loads up to 15 users initially
+
+Load More button loads up to 15 users more
+
+When new user is added in Add User view it appears in users list
+##### Add User Component
+Email validation both on client side (email is valid) and server side (email is not in use)
+
+Bcrypt is used to hash passwords
 #### Actions
-Actions use Thunk when appropriate (async)
+Action creators used for all actions
+
+Async actions use Thunk when appropriate
 #### Services
-There are 2 services : 1) add user 2) get users which use axios to make requests to server
+There are 2 services which used to make requests to server
+- add user
+- get users 
+
+Axios package is used
+
+### End To End Tests
+- Jest and Puppeteer are user
+- End to End test is under tests\App.test,js
+- This area is new for me (I made only server side unit and integration tests, no client side tests and no end-to-end tests). I learned some tutorials and installed the stuff, started to write the test. Eventually I got stuck when add user page appeared blank (see my comments in test file). I had no time to proceed further unfortunately.
 
 
 

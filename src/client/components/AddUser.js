@@ -137,6 +137,7 @@ class AddUser extends Component {
                         </CardHeader>      
                 <CardText>
                     <TextField style={style.textField}
+                    id="txtFirstName"
                         errorText={firstNameError}
                         hintText="First Name"
                         floatingLabelText="First Name"

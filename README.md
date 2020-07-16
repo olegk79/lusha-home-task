@@ -1,6 +1,6 @@
 # lusha-home-task
 
-This is a boilerplate to build a full stack web application using React, Node.js, Express and Webpack. It is also configured with webpack-dev-server, eslint, prettier and babel.
+This is "Users Manager" web application using React, Node.js, Express and Webpack. It is also configured with webpack-dev-server, eslint, prettier and babel.
 
 - [simple-react-full-stack](#simple-react-full-stack)
   - [Introduction](#introduction)

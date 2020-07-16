@@ -12,7 +12,7 @@ router.get("/api/users", async (req, res) => {
         if(Object.keys(req.query).length > 0) {
             let missingParams = validateParams(req.query,['skip','limit']);
             if(missingParams.length>0) {
-                res.json({
+                res.status(500).json({
                     success: false,
                     error: `missing parameter(s): ${missingParams.join(',')}`,
                     data: null

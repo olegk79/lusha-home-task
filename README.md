@@ -2,7 +2,7 @@
 
 This is "Users Manager" web application using React, Node.js, Express and Webpack. It is also configured with webpack-dev-server, eslint, prettier and babel.
 
-- [simple-react-full-stack](#simple-react-full-stack)
+- [lusha-home-task](#lusha-home-task)
   - [Introduction](#introduction)
     - [Development mode](#development-mode)
     - [Production mode](#production-mode)
